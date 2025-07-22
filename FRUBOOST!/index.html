@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <title>Fruboost | Premium Protein Jelly</title>
+  <style>
+ :root {
+  --primary-color: #FF8C42; /* Warm orange */
+  --secondary-color: #F4A261; /* Golden peach */
+  --accent-color: #E76F51; /* Warm terracotta */
+  --text-dark: #2A1A0A; /* Warm dark brown */
+  --text-light: #ffffff;
+  --background-light: #FFF8F0; /* Warm cream */
+  --background-dark: #2A1A0A;
+  --berry-purple: #D2691E; /* Warm chocolate */
+  --success-green: #8FBC8F; /* Warm sage green */
+  --max-width: 1200px;
+  --gradient-berry: linear-gradient(135deg, #FF8C42 0%, #E76F51 100%);
+  --gradient-fresh: linear-gradient(135deg, #F4A261 0%, #E9C46A 100%);
+  --gradient-earth: linear-gradient(135deg, #D2691E 0%, #A0522D 100%);
+}
+
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Montserrat", sans-serif;
+      background-color: var(--background-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    .btn {
+      outline: none;
+      border: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .btn-primary {
+      background: var(--gradient-berry);
+      color: var(--text-light);
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-size: 1rem;
+    }
+
+    .btn-secondary {
+      background: var(--gradient-fresh);
+      color: var(--text-light);
+      padding: 0.8rem 1.5rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    a {
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    /* Navigation */
+    nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(255, 248, 240, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+}
+
+    .nav__header {
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .nav__logo a {
+      font-size: 2rem;
+      font-weight: 800;
+      background: var(--gradient-berry);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav__menu__btn {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .nav__links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      padding: 2rem;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1.5rem;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+      z-index: -1;
+    }
+
+    .nav__links.open {
+      transform: translateY(0);
+    }
+
+    .nav__links a {
+      font-weight: 600;
+      color: var(--text-dark);
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+    }
+
+    .nav__links a:hover {
+      background: var(--gradient-berry);
+      color: var(--text-light);
+    }
+
+    .nav__btns {
+      display: none;
+    }
+
+   language-selector {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 1001;
+  background: rgba(255, 248, 240, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 0.5rem;
+  border-radius: 25px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.language-btn {
+  padding: 0.5rem 1rem;
+  background: var(--gradient-fresh);
+  color: var(--text-light);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.language-btn:hover {
+  transform: scale(1.05);
+}
+
+.language-btn.active {
+  background: var(--gradient-berry);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+    /* Hero Section */
+    .hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 80px;
+  background: linear-gradient(135deg, #FFF8F0 0%, #FFF0E6 100%);
+  position: relative;
+  overflow: hidden;
+}
+   .hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="berries" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="2" fill="%23FF8C42" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23berries)"/></svg>');
+  z-index: -1;
+}
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      display: grid;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .container__left {
+      text-align: center;
+    }
+
+    .container__left h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      background: var(--gradient-berry);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .container__left .subtitle {
+      font-size: 1.3rem;
+      color: var(--text-dark);
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+
+    .container__left .description {
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      margin-bottom: 3rem;
+      opacity: 0.8;
+    }
+
+    .container__right {
+      position: relative;
+      display: grid;
+      gap: 2rem;
+    }
+
+    .container__right::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 80%;
+      background: var(--gradient-berry);
+      border-radius: 20px;
+      z-index: -1;
+      animation: expandBackground 1s 1s ease-out forwards;
+    }
+
+    @keyframes expandBackground {
+      0% { width: 0; }
+      100% { width: calc(100% - 2rem); }
+    }
+
+    .product-images {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      perspective: 1000px;
+    }
+
+    .jar-1 {
+      width: 280px;
+      height: 350px;
+      background: var(--gradient-berry);
+      border-radius: 20px;
+      position: relative;
+      transform: rotateY(-15deg) translateZ(50px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-light);
+      font-weight: 800;
+      font-size: 1.2rem;
+      text-align: center;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .jar-2 {
+      width: 200px;
+      height: 250px;
+      background: var(--gradient-fresh);
+      border-radius: 20px;
+      position: relative;
+      transform: rotateY(15deg) translateZ(30px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-light);
+      font-weight: 800;
+      font-size: 1rem;
+      text-align: center;
+      animation: float 3s ease-in-out infinite 0.5s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotateY(-15deg); }
+      50% { transform: translateY(-20px) rotateY(-15deg); }
+    }
+
+    .jar-2 {
+      animation-name: float2;
+    }
+
+    @keyframes float2 {
+      0%, 100% { transform: translateY(0px) rotateY(15deg); }
+      50% { transform: translateY(-15px) rotateY(15deg); }
+    }
+
+    .product-info {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .product-info h4 {
+      color: var(--primary-color);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .product-info h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: var(--gradient-berry);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .product-info h3 {
+      font-size: 1.2rem;
+      color: var(--secondary-color);
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .product-info p {
+      color: var(--text-dark);
+      opacity: 0.8;
+      line-height: 1.8;
+    }
+
+    .features {
+      padding: 5rem 0;
+      background: var(--background-light);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .feature-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1.5rem;
+      background: var(--gradient-berry);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: var(--text-light);
+    }
+
+    .feature-card h3 {
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .location {
+      position: absolute;
+      bottom: 2rem;
+      left: 2rem;
+      padding: 1rem 2rem;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .location-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--gradient-berry);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-light);
+    }
+
+    .socials {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-btn {
+      width: 50px;
+      height: 50px;
+      background: var(--gradient-fresh);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-light);
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: var(--gradient-berry);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.2rem;
+      color: var(--text-dark);
+      opacity: 0.8;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* About Section */
+    .about {
+      padding: 5rem 0;
+      background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    }
+
+    .about-content {
+      display: grid;
+      gap: 3rem;
+      align-items: center;
+      margin-top: 3rem;
+    }
+
+    .about-text {
+      background: white;
+      padding: 3rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .about-text h3 {
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .about-text p {
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+      color: var(--text-dark);
+      opacity: 0.9;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 1.5rem;
+      background: var(--gradient-berry);
+      border-radius: 15px;
+      color: var(--text-light);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    @media (min-width: 768px) {
+      nav {
+        padding: 1rem 0;
+      }
+
+      .nav__header {
+        padding: 0 2rem;
+      }
+
+      .nav__menu__btn {
+        display: none;
+      }
+
+      .nav__links {
+        position: static;
+        padding: 0;
+        flex-direction: row;
+        background: transparent;
+        transform: none;
+        backdrop-filter: none;
+      }
+
+      .nav__btns {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .nav__btns .btn {
+        background: none;
+        border: 2px solid var(--primary-color);
+        color: var(--primary-color);
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        font-weight: 600;
+      }
+
+      .nav__btns .btn:hover {
+        background: var(--primary-color);
+        color: var(--text-light);
+      }
+
+      .container {
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        padding: 2rem;
+      }
+
+      .container__left {
+        text-align: left;
+      }
+
+      .container__left h1 {
+        font-size: 4rem;
+      }
+
+      .about-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .container__right {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+      }
+
+      .container__right::before {
+        bottom: unset;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        height: 90%;
+      }
+
+      .product-images {
+        flex-direction: column;
+      }
+
+      .jar-1 {
+        width: 300px;
+        height: 380px;
+      }
+
+      .jar-2 {
+        width: 220px;
+        height: 280px;
+        margin-top: -50px;
+      }
+
+      .product-info {
+        text-align: left;
+      }
+    }
+
+    /* Footer Styles */
+.footer {
+  background: var(--gradient-earth);
+  color: var(--text-light);
+  padding: 3rem 1rem 1rem;
+}
+
+.footer-content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.footer-section h4 {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.footer-section h4::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 40px;
+  height: 2px;
+  background: var(--secondary-color);
+}
+
+.footer-section ul {
+  list-style: none;
+  margin-top: 1.5rem;
+  padding: 0;
+}
+
+.footer-section li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-section a {
+  color: var(--text-light);
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.footer-section a:hover {
+  opacity: 1;
+}
+
+.newsletter-form {
+  display: flex;
+  margin-top: 1.5rem;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--text-light);
+}
+
+.newsletter-form input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.newsletter-form button {
+  padding: 0 1rem;
+  background: var(--gradient-warm);
+  color: var(--text-light);
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.newsletter-form button:hover {
+  background: var(--primary-color);
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: var(--text-light);
+  transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+  background: var(--primary-color);
+  transform: translateY(-3px);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.footer-links a {
+  color: var(--text-light);
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+}
+
+  </style>
+</head>
+
+<body>
+  <div class="language-selector">
+  <button class="language-btn active" data-lang="en">EN</button>
+  <button class="language-btn" data-lang="es">ES</button>
+  <button class="language-btn" data-lang="ja-katakana">カタカナ</button>
+  <button class="language-btn" data-lang="ja-romaji">Romaji</button>
+  <button class="language-btn" data-lang="ja-kanji">漢字</button>
+</div>
+
+  <nav>
+  <div class="nav__header">
+    <div class="nav__logo">
+      <a href="#"><img src="assets/LOGOrectangular.png" alt="Fruboost Logo" style="height: 40px; width: auto;"></a>
+    </div>
+    
+    <!-- Language selector moved next to logo -->
+    <div class="nav-language-selector">
+      <button class="language-btn active" data-lang="en">EN</button>
+      <button class="language-btn" data-lang="es">ES</button>
+      <button class="language-btn" data-lang="ja-katakana">カタカナ</button>
+      <button class="language-btn" data-lang="ja-romaji">Romaji</button>
+      <button class="language-btn" data-lang="ja-kanji">漢字</button>
+    </div>
+    
+    <div class="nav__menu__btn" id="menu-btn">
+      <i class="ri-menu-line"></i>
+    </div>
+  </div>
+  
+  <ul class="nav__links" id="nav-links">
+    <li><a href="#home" data-text="HOME">HOME</a></li>
+    <li><a href="#about" data-text="ABOUT">ABOUT</a></li>
+    <li><a href="#products" data-text="PRODUCTS">PRODUCTS</a></li>
+    <li><a href="#contact" data-text="CONTACT">CONTACT</a></li>
+  </ul>
+  
+  <div class="nav__btns">
+    <button class="btn"><i class="ri-search-line"></i></button>
+    <button class="btn"><i class="ri-shopping-bag-line"></i></button>
+  </div>
+</nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="container__left">
+        <h1 data-text="Nutritious Protein Jelly">Nutritious Protein Jelly</h1>
+        <p class="subtitle" data-text="Mexican Innovation Meets Japanese Quality">Mexican Innovation Meets Japanese Quality</p>
+        <p class="description" data-text="Discover Fruboost's premium protein jelly made with natural berries and chia seeds. A perfect blend of taste and nutrition for your active lifestyle.">
+          Discover Fruboost's premium protein jelly made with natural berries and chia seeds. A perfect blend of taste and nutrition for your active lifestyle.
+        </p>
+        <div class="container__btn">
+          <button class="btn btn-primary" data-text="DISCOVER MORE">DISCOVER MORE</button>
+        </div>
+      </div>
+      <div class="container__right">
+        <div class="product-images">
+          <div class="jar-1">
+              <img src="assets/mermeladasp.jpeg" alt="Fruboost Premium Protein Jelly" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+
+            <div>
+              <div data-text="FRUBOOST">FRUBOOST</div>
+              <div data-text="Berry Mix">Berry Mix</div>
+              <div data-text="500ml">500ml</div>
+            </div>
+          </div>
+          <div class="jar-2">
+              <img src="assets/mermelada.jpeg" alt="Fruboost Single Bottle" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+
+            <div>
+              <div data-text="PROTEIN">PROTEIN</div>
+              <div data-text="JELLY">JELLY</div>
+            </div>
+          </div>
+        </div>
+        <div class="product-info">
+              <img src="assets/ingredientes.jpeg" alt="Nutrition Facts" style="width: 100px; height: 100px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
+
+          <h4 data-text="500ml | Natural Protein">500ml | Natural Protein</h4>
+          <h2 data-text="BERRY FUSION">BERRY FUSION</h2>
+          <h3 data-text="Premium Protein Jelly">Premium Protein Jelly</h3>
+          <p data-text="Made with carefully selected strawberries, raspberries, and blackberries, enriched with plant protein and chia seeds. 100% natural, no added sugar, high in fiber and omega-3.">
+            Made with carefully selected strawberries, raspberries, and blackberries, enriched with plant protein and chia seeds. 100% natural, no added sugar, high in fiber and omega-3.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="location">
+      <div class="location-icon">
+        <i class="ri-map-pin-2-fill"></i>
+      </div>
+      <span data-text="MEXICO TO JAPAN">MEXICO TO JAPAN</span>
+    </div>
+    <div class="socials">
+      <a href="#" class="social-btn"><img src="assets/LOGOmini.jpeg" alt="Logo" style="width: 30px; height: 30px; border-radius: 50%;"></a>
+      <a href="#" class="social-btn"><i class="ri-facebook-fill"></i></a>
+      <a href="#" class="social-btn"><i class="ri-instagram-line"></i></a>
+      <a href="#" class="social-btn"><i class="ri-twitter-fill"></i></a>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="products">
+    <div class="container">
+      <h2 class="section-title" data-text="Why Choose Fruboost">Why Choose Fruboost</h2>
+      <p class="section-subtitle" data-text="Discover the perfect combination of taste, nutrition, and convenience in every jar">
+        Discover the perfect combination of taste, nutrition, and convenience in every jar
+      </p>
+      <div class="features-grid">
+          <img src="assets/mermeladajp.jpeg" alt="Japanese Market Products" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 1rem;">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="ri-leaf-line"></i>
+          </div>
+          <h3 data-text="100% Natural">100% Natural</h3>
+          <p data-text="Made with natural ingredients and no artificial preservatives">Made with natural ingredients and no artificial preservatives</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="ri-heart-pulse-line"></i>
+          </div>
+          <h3 data-text="High Protein">High Protein</h3>
+          <p data-text="Enriched with plant protein for muscle maintenance and growth">Enriched with plant protein for muscle maintenance and growth</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="ri-drop-line"></i>
+          </div>
+          <h3 data-text="Omega-3 Rich">Omega-3 Rich</h3>
+          <p data-text="Contains chia seeds rich in omega-3 fatty acids">Contains chia seeds rich in omega-3 fatty acids</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="ri-shield-check-line"></i>
+          </div>
+          <h3 data-text="No Added Sugar">No Added Sugar</h3>
+          <p data-text="Naturally sweetened with fruit, perfect for health-conscious consumers">Naturally sweetened with fruit, perfect for health-conscious consumers</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="container">
+      <h2 class="section-title" data-text="Our Story">Our Story</h2>
+      <p class="section-subtitle" data-text="From Mexico to Japan, bringing innovation and flavor together">
+        From Mexico to Japan, bringing innovation and flavor together
+      </p>
+      <div class="about-content">
+        <div class="about-text">
+          <h3 data-text="Mission">Mission</h3>
+          <p data-text="To provide innovative and nutritious products that promote a healthy lifestyle, offering high-quality protein jellies that satisfy our customers' needs.">
+            To provide innovative and nutritious products that promote a healthy lifestyle, offering high-quality protein jellies that satisfy our customers' needs.
+          </p>
+          <h3 data-text="Vision">Vision</h3>
+          <p data-text="To become recognized leaders in the healthy food market, being the preferred choice for consumers seeking nutritious and delicious alternatives for their daily diet.">
+            To become recognized leaders in the healthy food market, being the preferred choice for consumers seeking nutritious and delicious alternatives for their daily diet.
+          </p>
+          <div class="about-stats">
+            <div class="stat-item">
+              <div class="stat-number">500</div>
+              <div class="stat-label" data-text="ML Premium">ML Premium</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">100%</div>
+              <div class="stat-label" data-text="Natural">Natural</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">0</div>
+              <div class="stat-label" data-text="Added Sugar">Added Sugar</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-text">
+          <h3 data-text="Expanding to Japan">Expanding to Japan</h3>
+          <p data-text="Japan represents a strategic opportunity for Fruboost, supported by economic, social, and cultural factors that favor the entry of healthy and innovative foods.">
+            Japan represents a strategic opportunity for Fruboost, supported by economic, social, and cultural factors that favor the entry of healthy and innovative foods.
+          </p>
+          <p data-text="With its solid economy, high purchasing power, and growing interest in functional foods, Japan is the ideal market for our premium protein jellies.">
+            With its solid economy, high purchasing power, and growing interest in functional foods, Japan is the ideal market for our premium protein jellies.
+          </p>
+          <button class="btn btn-secondary" data-text="LEARN MORE">LEARN MORE</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h4 data-text="How it works">Como funciona</h4>
+      <ul>
+        <li><a href="#" data-text="FAQs">FAQs</a></li>
+        <li><a href="#" data-text="Transformations">Transformaciones</a></li>
+        <li><a href="#" data-text="Reviews">Reseñas</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h4 data-text="Our menu">Nuestro menú</h4>
+      <ul>
+        <li><a href="#" data-text="Goal Plans">Planes con metas</a></li>
+        <li><a href="#" data-text="Custom Meals">Comidas Personalizadas</a></li>
+        <li><a href="#" data-text="Build Your Plan">Construye tu plan</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h4>FRUBOOST</h4>
+      <ul>
+        <li><a href="#" data-text="Get $50">Obten $50</a></li>
+        <li><a href="#" data-text="Contact Us">Contact Us</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section newsletter">
+      <h4 data-text="Sign up for exclusive offers">Registrate para ofertas exclusivas</h4>
+      <form class="newsletter-form">
+        <input type="email" data-placeholder="Your email address" placeholder="Tu correo electrónico" required>
+        <button type="submit">→</button>
+      </form>
+      <div class="social-icons">
+        <a href="#"><i class="ri-facebook-fill"></i></a>
+        <a href="#"><i class="ri-twitter-fill"></i></a>
+        <a href="#"><i class="ri-instagram-line"></i></a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>© 2024 FRUBOOST</p>
+    <div class="footer-links">
+      <a href="#" data-text="Terms">Terms</a>
+      <a href="#" data-text="Privacy">Privacy</a>
+    </div>
+  </div>
+</footer>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script>
+    // Navigation toggle
+    const menuBtn = document.getElementById("menu-btn");
+    const navLinks = document.getElementById("nav-links");
+    const menuBtnIcon = menuBtn.querySelector("i");
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+      const isOpen = navLinks.classList.contains("open");
+      menuBtnIcon.setAttribute("class", isOpen ? "ri-close-line" : "ri-menu-line");
+    });
+
+    navLinks.addEventListener("click", () => {
+      navLinks.classList.remove("open");
+      menuBtnIcon.setAttribute("class", "ri-menu-line");
+    });
+
+    // Language translations
+    const translations = {
+      en: {
+        "Fruboost": "Fruboost",
+        "HOME": "HOME",
+        "ABOUT": "ABOUT",
+        "PRODUCTS": "PRODUCTS",
+        "CONTACT": "CONTACT",
+        "Nutritious Protein Jelly": "Nutritious Protein Jelly",
+        "Mexican Innovation Meets Japanese Quality": "Mexican Innovation Meets Japanese Quality",
+        "Discover Fruboost's premium protein jelly made with natural berries and chia seeds. A perfect blend of taste and nutrition for your active lifestyle.": "Discover Fruboost's premium protein jelly made with natural berries and chia seeds. A perfect blend of taste and nutrition for your active lifestyle.",
+        "DISCOVER MORE": "DISCOVER MORE",
+        "FRUBOOST": "FRUBOOST",
+        "Berry Mix": "Berry Mix",
+        "500ml": "500ml",
+        "PROTEIN": "PROTEIN",
+        "JELLY": "JELLY",
+        "500ml | Natural Protein": "500ml | Natural Protein",
+        "BERRY FUSION": "BERRY FUSION",
+        "Premium Protein Jelly": "Premium Protein Jelly",
+        "Made with carefully selected strawberries, raspberries, and blackberries, enriched with plant protein and chia seeds. 100% natural, no added sugar, high in fiber and omega-3.": "Made with carefully selected strawberries, raspberries, and blackberries, enriched with plant protein and chia seeds. 100% natural, no added sugar, high in fiber and omega-3.",
+        "MEXICO TO JAPAN": "MEXICO TO JAPAN",
+        "Why Choose Fruboost": "Why Choose Fruboost",
+        "Discover the perfect combination of taste, nutrition, and convenience in every jar": "Discover the perfect combination of taste, nutrition, and convenience in every jar",
+        "100% Natural": "100% Natural",
+        "Made with natural ingredients and no artificial preservatives": "Made with natural ingredients and no artificial preservatives",
+        "High Protein": "High Protein",
+        "Enriched with plant protein for muscle maintenance and growth": "Enriched with plant protein for muscle maintenance and growth",
+        "Omega-3 Rich": "Omega-3 Rich",
+        "Contains chia seeds rich in omega-3 fatty acids": "Contains chia seeds rich in omega-3 fatty acids",
+        "No Added Sugar": "No Added Sugar",
+        "Naturally sweetened with fruit, perfect for health-conscious consumers": "Naturally sweetened with fruit, perfect for health-conscious consumers",
+        "Our Story": "Our Story",
+        "From Mexico to Japan, bringing innovation and flavor together": "From Mexico to Japan, bringing innovation and flavor together",
+        "Mission": "Mission",
+        "To provide innovative and nutritious products that promote a healthy lifestyle, offering high-quality protein jellies that satisfy our customers' needs.": "To provide innovative and nutritious products that promote a healthy lifestyle, offering high-quality protein jellies that satisfy our customers' needs.",
+        "Vision": "Vision",
+        "To become recognized leaders in the healthy food market, being the preferred choice for consumers seeking nutritious and delicious alternatives for their daily diet.": "To become recognized leaders in the healthy food market, being the preferred choice for consumers seeking nutritious and delicious alternatives for their daily diet.",
+        "ML Premium": "ML Premium",
+        "Natural": "Natural",
+        "Added Sugar": "Added Sugar",
+        "Expanding to Japan": "Expanding to Japan",
+        "Japan represents a strategic opportunity for Fruboost, supported by economic, social, and cultural factors that favor the entry of healthy and innovative foods.": "Japan represents a strategic opportunity for Fruboost, supported by economic, social, and cultural factors that favor the entry of healthy and innovative foods.",
+        "With its solid economy, high purchasing power, and growing interest in functional foods, Japan is the ideal market for our premium protein jellies.": "With its solid economy, high purchasing power, and growing interest in functional foods, Japan is the ideal market for our premium protein jellies.",
+        "LEARN MORE": "LEARN MORE",
+        "How it works": "How it works",
+        "FAQs": "FAQs",
+        "Transformations": "Transformations",
+        "Reviews": "Reviews",
+        "Our menu": "Our menu",
+        "Goal Plans": "Goal Plans",
+        "Custom Meals": "Custom Meals",
+        "Build Your Plan": "Build Your Plan",
+        "Get $50": "Get $50",
+        "Contact Us": "Contact Us",
+        "Sign up for exclusive offers": "Sign up for exclusive offers",
+        "Your email address": "Your email address",
+        "Terms": "Terms",
+        "Privacy": "Privacy"
+  
+      },   es: {
+        "Fruboost": "Fruboost",
+        "HOME": "INICIO",
+        "ABOUT": "NOSOTROS",
+        "PRODUCTS": "PRODUCTOS",
+        "CONTACT": "CONTACTO",
+        "Nutritious Protein Jelly": "Gelatina Proteica Nutritiva",
+        "Mexican Innovation Meets Japanese Quality": "Innovación Mexicana con Calidad Japonesa",
+        "Discover Fruboost's premium protein jelly made with natural berries and chia seeds. A perfect blend of taste and nutrition for your active lifestyle.": "Descubre la gelatina proteica premium de Fruboost hecha con bayas naturales y semillas de chía. La combinación perfecta de sabor y nutrición para tu estilo de vida activo.",
+        "DISCOVER MORE": "DESCUBRE MÁS",
+        "FRUBOOST": "FRUBOOST",
+        "Berry Mix": "Mezcla de Bayas",
+        "500ml": "500ml",
+        "PROTEIN": "PROTEÍNA",
+        "JELLY": "GELATINA",
+        "500ml | Natural Protein": "500ml | Proteína Natural",
+        "BERRY FUSION": "FUSIÓN DE BAYAS",
+        "Premium Protein Jelly": "Gelatina Proteica Premium",
+        "Made with carefully selected strawberries, raspberries, and blackberries, enriched with plant protein and chia seeds. 100% natural, no added sugar, high in fiber and omega-3.": "Elaborada con fresas, frambuesas y moras cuidadosamente seleccionadas, enriquecidas con proteína vegetal y semillas de chía. 100% natural, sin azúcar añadido, alto contenido de fibra y omega-3.",
+        "MEXICO TO JAPAN": "DE MÉXICO A JAPÓN",
+        "Why Choose Fruboost": "¿Por Qué Elegir Fruboost?",
+        "Discover the perfect combination of taste, nutrition, and convenience in every jar": "Descubre la combinación perfecta de sabor, nutrición y conveniencia en cada frasco",
+        "100% Natural": "100% Natural",
+        "Made with natural ingredients and no artificial preservatives": "Hecho con ingredientes naturales y sin conservadores artificiales",
+        "High Protein": "Alto en Proteínas",
+        "Enriched with plant protein for muscle maintenance and growth": "Enriquecido con proteína vegetal para el mantenimiento y crecimiento muscular",
+        "Omega-3 Rich": "Rico en Omega-3",
+        "Contains chia seeds rich in omega-3 fatty acids": "Contiene semillas de chía ricas en ácidos grasos omega-3",
+        "No Added Sugar": "Sin Azúcar Añadido",
+        "Naturally sweetened with fruit, perfect for health-conscious consumers": "Endulzado naturalmente con fruta, perfecto para consumidores conscientes de su salud",
+        "Our Story": "Nuestra Historia",
+        "From Mexico to Japan, bringing innovation and flavor together": "De México a Japón, uniendo innovación y sabor",
+        "Mission": "Misión",
+        "To provide innovative and nutritious products that promote a healthy lifestyle, offering high-quality protein jellies that satisfy our customers' needs.": "Proporcionar productos innovadores y nutritivos que promuevan un estilo de vida saludable, ofreciendo gelatinas proteicas de alta calidad que satisfagan las necesidades de nuestros clientes.",
+        "Vision": "Visión",
+        "To become recognized leaders in the healthy food market, being the preferred choice for consumers seeking nutritious and delicious alternatives for their daily diet.": "Convertirnos en líderes reconocidos en el mercado de alimentos saludables, siendo la opción preferida para los consumidores que buscan alternativas nutritivas y deliciosas para su dieta diaria.",
+        "ML Premium": "ML Premium",
+        "Natural": "Natural",
+        "Added Sugar": "Azúcar Añadido",
+        "Expanding to Japan": "Expansión a Japón",
+        "Japan represents a strategic opportunity for Fruboost, supported by economic, social, and cultural factors that favor the entry of healthy and innovative foods.": "Japón representa una oportunidad estratégica para Fruboost, respaldada por factores económicos, sociales y culturales que favorecen la entrada de alimentos saludables e innovadores.",
+        "With its solid economy, high purchasing power, and growing interest in functional foods, Japan is the ideal market for our premium protein jellies.": "Con su economía sólida, alto poder adquisitivo y creciente interés en alimentos funcionales, Japón es el mercado ideal para nuestras gelatinas proteicas premium.",
+        "LEARN MORE": "APRENDE MÁS",
+        "How it works": "Cómo funciona",
+        "FAQs": "Preguntas frecuentes",
+        "Transformations": "Transformaciones",
+        "Reviews": "Reseñas",
+        "Our menu": "Nuestro menú",
+        "Goal Plans": "Planes con metas",
+        "Custom Meals": "Comidas personalizadas",
+        "Build Your Plan": "Construye tu plan",
+        "Get $50": "Obtén $50",
+        "Contact Us": "Contáctanos",
+        "Sign up for exclusive offers": "Regístrate para ofertas exclusivas",
+        "Your email address": "Tu correo electrónico",
+        "Terms": "Términos",
+        "Privacy": "Privacidad"
+    },
+
+      "ja-katakana": {
+        "Fruboost": "フルブースト",
+        "HOME": "ホーム",
+        "ABOUT": "アバウト",
+        "PRODUCTS": "プロダクツ",
+        "CONTACT": "コンタクト",
+        "Nutritious Protein Jelly": "エイヨウ プロテイン ジェリー",
+        "Mexican Innovation Meets Japanese Quality": "メキシカン イノベーション ミーツ ジャパニーズ クオリティ",
+        "Discover Fruboost's premium protein jelly made with natural berries and chia seeds. A perfect blend of taste and nutrition for your active lifestyle.": "ナチュラル ベリー アンド チア シード デ ツクラレタ フルブースト ノ プレミアム プロテイン ジェリー オ ハッケン シテ クダサイ。",
+        "DISCOVER MORE": "モット ハッケン",
+        "FRUBOOST": "フルブースト",
+        "Berry Mix": "ベリー ミックス",
+        "500ml": "500ml",
+        "PROTEIN": "プロテイン",
+        "JELLY": "ジェリー",
+        "500ml | Natural Protein": "500ml | ナチュラル プロテイン",
+        "BERRY FUSION": "ベリー フュージョン",
+        "Premium Protein Jelly": "プレミアム プロテイン ジェリー",
+        "Made with carefully selected strawberries, raspberries, and blackberries, enriched with plant protein and chia seeds. 100% natural, no added sugar, high in fiber and omega-3.": "センベツ サレタ ストロベリー、ラズベリー、ブラックベリー デ ツクラレ、プラント プロテイン ト チア シード デ エンリッチ サレテイマス。",
+        "MEXICO TO JAPAN": "メキシコ カラ ジャパン ヘ",
+        "Why Choose Fruboost": "ナゼ フルブースト オ エラブ ノカ",
+        "Discover the perfect combination of taste, nutrition, and convenience in every jar": "スベテ ノ ジャー デ アジ、エイヨウ、ベンリサ ノ パーフェクト ナ コンビネーション オ ハッケン",
+        "100% Natural": "100% ナチュラル",
+        "Made with natural ingredients and no artificial preservatives": "ナチュラル ザイリョウ デ ツクラレ、ジンコウ ホゾンリョウ ナシ",
+        "High Protein": "ハイ プロテイン",
+        "Enriched with plant protein for muscle maintenance and growth": "キンニク ノ イジ ト セイチョウ ノ タメ ニ プラント プロテイン デ エンリッチ",
+        "Omega-3 Rich": "オメガ-3 リッチ",
+        "Contains chia seeds rich in omega-3 fatty acids": "オメガ-3 シボウサン ガ ホウフ ナ チア シード ガ フクマレテイマス",
+        "No Added Sugar": "サトウ ツイカ ナシ",
+        "Naturally sweetened with fruit, perfect for health-conscious consumers": "フルーツ デ シゼン ニ アマクサレ、ケンコウ イシキ ノ タカイ ショウヒシャ ニ サイテキ",
+        "Our Story": "ワタシタチ ノ ストーリー",
+        "From Mexico to Japan, bringing innovation and flavor together": "メキシコ カラ ジャパン ヘ、イノベーション ト フレーバー オ イッショ ニ モタラシマス",
+        "Mission": "ミッション",
+        "To provide innovative and nutritious products that promote a healthy lifestyle, offering high-quality protein jellies that satisfy our customers' needs.": "ケンコウ ナ ライフスタイル オ ソクシン スル カクシン テキ デ エイヨウ カ ノ アル セイヒン オ テイキョウ シマス。",
+        "Vision": "ビジョン",
+        "To become recognized leaders in the healthy food market, being the preferred choice for consumers seeking nutritious and delicious alternatives for their daily diet.": "ケンコウ ショクヒン シジョウ デ ニンチ サレタ リーダー ニ ナル コト オ メザシテイマス。",
+        "ML Premium": "ML プレミアム",
+        "Natural": "ナチュラル",
+        "Added Sugar": "サトウ ツイカ",
+        "Expanding to Japan": "ジャパン ヘ ノ カクダイ",
+        "Japan represents a strategic opportunity for Fruboost, supported by economic, social, and cultural factors that favor the entry of healthy and innovative foods.": "ジャパン ワ フルブースト ニ トッテ センリャク テキ ナ キカイ オ ヒョウゲン シテイマス。",
+        "With its solid economy, high purchasing power, and growing interest in functional foods, Japan is the ideal market for our premium protein jellies.": "ケンジツ ナ ケイザイ、タカイ コウバイリョク、キノウ ショクヒン ヘ ノ カンシン ノ タカマリ ニ ヨリ、ジャパン ワ サイテキ ナ シジョウ デス。",
+        "LEARN MORE": "モット マナブ",
+         "How it works": "使い方",
+        "FAQs": "よくある質問",
+        "Transformations": "変身",
+        "Reviews": "レビュー",
+        "Our menu": "メニュー",
+        "Goal Plans": "目標計画",
+        "Custom Meals": "カスタム食事",
+        "Build Your Plan": "プラン作成",
+        "Get $50": "50ドルを獲得",
+        "Contact Us": "お問い合わせ",
+        "Sign up for exclusive offers": "限定オファーに登録",
+        "Your email address": "メールアドレス",
+        "Terms": "利用規約",
+        "Privacy": "プライバシー"
+      },
+      "ja-romaji": {
+        "Fruboost": "Furubuusuto",
+        "HOME": "Hoomu",
+        "ABOUT": "Abauto",
+        "PRODUCTS": "Purodakutsu",
+        "CONTACT": "Kontakuto",
+        "Nutritious Protein Jelly": "Eiyou Purotein Jerii",
+        "Mexican Innovation Meets Japanese Quality": "Mekishikan Inobēshon Miitsu Japaniizu Kuariti",
+        "Discover Fruboost's premium protein jelly made with natural berries and chia seeds. A perfect blend of taste and nutrition for your active lifestyle.": "Nachuraru berii to chia shiido de tsukurareta Furubuusuto no puremiamu purotein jerii wo hakken shite kudasai.",
+        "DISCOVER MORE": "motto hakken",
+        "FRUBOOST": "Furubuusuto",
+        "Berry Mix": "Berii Mikkusu",
+        "500ml": "500ml",
+        "PROTEIN": "Purotein",
+        "JELLY": "Jerii",
+        "500ml | Natural Protein": "500ml | Nachuraru Purotein",
+        "BERRY FUSION": "Berii Fyuujon",
+        "Premium Protein Jelly": "Puremiamu Purotein Jerii",
+        "Made with carefully selected strawberries, raspberries, and blackberries, enriched with plant protein and chia seeds. 100% natural, no added sugar, high in fiber and omega-3.": "Senbetsu sareta sutoroberii, razuberii, burakkuberii de tsukurare, puranto purotein to chia shiido de enritchi sarete imasu.",
+        "MEXICO TO JAPAN": "Mekishiko kara Japan e",
+        "Why Choose Fruboost": "Naze Furubuusuto wo erabu no ka",
+        "Discover the perfect combination of taste, nutrition, and convenience in every jar": "Subete no jaa de aji, eiyou, benrisa no paafekuto na konbineeshon wo hakken",
+        "100% Natural": "100% Nachuraru",
+        "Made with natural ingredients and no artificial preservatives": "Nachuraru zairyou de tsukurare, jinkou hozonryou nashi",
+        "High Protein": "Hai Purotein",
+        "Enriched with plant protein for muscle maintenance and growth": "Kinniku no iji to seichou no tame ni puranto purotein de enritchi",
+        "Omega-3 Rich": "Omega-3 Ritchi",
+        "Contains chia seeds rich in omega-3 fatty acids": "Omega-3 shibousan ga houfuu na chia shiido ga fukumarete imasu",
+        "No Added Sugar": "Satou tsuika nashi",
+        "Naturally sweetened with fruit, perfect for health-conscious consumers": "Furuutsu de shizen ni amakusare, kenkou ishiki no takai shouhisha ni saiteki",
+        "Our Story": "Watashitachi no sutoorii",
+        "From Mexico to Japan, bringing innovation and flavor together": "Mekishiko kara Japan e, inobēshon to fureebaa wo issho ni motarashimasu",
+        "Mission": "Misshon",
+        "To provide innovative and nutritious products that promote a healthy lifestyle, offering high-quality protein jellies that satisfy our customers' needs.": "Kenkou na raifusutairu wo sokushin suru kakushin-teki de eiyou-ka no aru seihin wo teikyou shimasu.",
+        "Vision": "Bijon",
+        "To become recognized leaders in the healthy food market, being the preferred choice for consumers seeking nutritious and delicious alternatives for their daily diet.": "Kenkou shokuhin shijou de ninchi sareta riidaa ni naru koto wo mezashite imasu.",
+        "ML Premium": "ML Puremiamu",
+        "Natural": "Nachuraru",
+        "Added Sugar": "Satou tsuika",
+        "Expanding to Japan": "Japan e no kakudai",
+        "Japan represents a strategic opportunity for Fruboost, supported by economic, social, and cultural factors that favor the entry of healthy and innovative foods.": "Japan wa Furubuusuto ni totte senryaku-teki na kikai wo hyougen shite imasu.",
+        "With its solid economy, high purchasing power, and growing interest in functional foods, Japan is the ideal market for our premium protein jellies.": "Kenjitsu na keizai, takai koubairyoku, kinou shokuhin e no kanshin no takamari ni yori, Japan wa saiteki na shijou desu.",
+        "LEARN MORE": "Motto manabu"
+      },
+      "ja-kanji": {
+        "Fruboost": "果実力",
+        "HOME": "家",
+        "ABOUT": "私達について",
+        "PRODUCTS": "製品",
+        "CONTACT": "連絡",
+        "Nutritious Protein Jelly": "栄養蛋白質ゼリー",
+        "Mexican Innovation Meets Japanese Quality": "墨西哥革新会日本品質",
+        "Discover Fruboost's premium protein jelly made with natural berries and chia seeds. A perfect blend of taste and nutrition for your active lifestyle.": "天然果実とチア種子で作られた果実力の高級蛋白質ゼリーを発見してください。活動的な生活のための味と栄養の完璧な組み合わせです。",
+        "DISCOVER MORE": "更に発見",
+        "FRUBOOST": "果実力",
+        "Berry Mix": "果実混合",
+        "500ml": "500ml",
+        "PROTEIN": "蛋白質",
+        "JELLY": "ゼリー",
+        "500ml | Natural Protein": "500ml | 天然蛋白質",
+        "BERRY FUSION": "果実融合",
+        "Premium Protein Jelly": "高級蛋白質ゼリー",
+        "Made with carefully selected strawberries, raspberries, and blackberries, enriched with plant protein and chia seeds. 100% natural, no added sugar, high in fiber and omega-3.": "厳選された苺、覆盆子、黒苺で作られ、植物蛋白質とチア種子で濃縮されています。100%天然、砂糖無添加、繊維とオメガ3豊富。",
+        "MEXICO TO JAPAN": "墨西哥から日本へ",
+        "Why Choose Fruboost": "なぜ果実力を選ぶのか",
+        "Discover the perfect combination of taste, nutrition, and convenience in every jar": "全ての瓶で味、栄養、便利さの完璧な組み合わせを発見",
+        "100% Natural": "100%天然",
+        "Made with natural ingredients and no artificial preservatives": "天然材料で作られ、人工保存料なし",
+        "High Protein": "高蛋白質",
+        "Enriched with plant protein for muscle maintenance and growth": "筋肉の維持と成長のための植物蛋白質で濃縮",
+        "Omega-3 Rich": "オメガ3豊富",
+        "Contains chia seeds rich in omega-3 fatty acids": "オメガ3脂肪酸が豊富なチア種子が含まれています",
+        "No Added Sugar": "砂糖無添加",
+        "Naturally sweetened with fruit, perfect for health-conscious consumers": "果実で自然に甘くされ、健康意識の高い消費者に最適",
+        "Our Story": "私達の物語",
+        "From Mexico to Japan, bringing innovation and flavor together": "墨西哥から日本へ、革新と味を一緒に持参します",
+        "Mission": "使命",
+        "To provide innovative and nutritious products that promote a healthy lifestyle, offering high-quality protein jellies that satisfy our customers' needs.": "健康的な生活様式を促進する革新的で栄養価の高い製品を提供し、顧客の需要を満たす高品質蛋白質ゼリーを提供します。",
+        "Vision": "展望",
+        "To become recognized leaders in the healthy food market, being the preferred choice for consumers seeking nutritious and delicious alternatives for their daily diet.": "健康食品市場で認知された指導者になり、日常食事のための栄養価の高い美味しい代替品を求める消費者の優先選択肢となることを目指します。",
+        "ML Premium": "ML高級",
+        "Natural": "天然",
+        "Added Sugar": "砂糖添加",
+        "Expanding to Japan": "日本への拡大",
+        "Japan represents a strategic opportunity for Fruboost, supported by economic, social, and cultural factors that favor the entry of healthy and innovative foods.": "日本は果実力にとって戦略的機会を表し、健康的で革新的な食品の参入を支持する経済的、社会的、文化的要因によって支えられています。",
+        "With its solid economy, high purchasing power, and growing interest in functional foods, Japan is the ideal market for our premium protein jellies.": "堅実な経済、高い購買力、機能性食品への関心の高まりにより、日本は我々の高級蛋白質ゼリーにとって理想的な市場です。",
+        "LEARN MORE": "更に学ぶ"
+      }
+      
+    };
+
+    // Language switching functionality
+    const languageButtons = document.querySelectorAll('.language-btn');
+    const textElements = document.querySelectorAll('[data-text]');
+
+    languageButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const lang = button.dataset.lang;
+    
+    // Update active button
+    languageButtons.forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+    
+    // Update text content
+    textElements.forEach(element => {
+      const key = element.dataset.text;
+      if (translations[lang] && translations[lang][key]) {
+        element.textContent = translations[lang][key];
+      }
+    });
+    
+    // Update placeholder text
+    document.querySelectorAll('[data-placeholder]').forEach(element => {
+      const key = element.dataset.placeholder;
+      if (translations[lang] && translations[lang][key]) {
+        element.placeholder = translations[lang][key];
+      }
+    });
+  });
+});
+
+    // Scroll animations
+    const scrollRevealOption = {
+      distance: "50px",
+      origin: "bottom",
+      duration: 1000,
+    };
+
+    ScrollReveal().reveal(".container__left h1", {
+      ...scrollRevealOption,
+    });
+    ScrollReveal().reveal(".container__left .subtitle", {
+      ...scrollRevealOption,
+      delay: 300,
+    });
+    ScrollReveal().reveal(".container__left .description", {
+      ...scrollRevealOption,
+      delay: 500,
+    });
+    ScrollReveal().reveal(".container__left .container__btn", {
+      ...scrollRevealOption,
+      delay: 700,
+    });
+
+    ScrollReveal().reveal(".product-info h4", {
+      ...scrollRevealOption,
+      delay: 1000,
+    });
+    ScrollReveal().reveal(".product-info h2", {
+      ...scrollRevealOption,
+      delay: 1200,
+    });
+    ScrollReveal().reveal(".product-info h3", {
+      ...scrollRevealOption,
+      delay: 1400,
+    });
+    ScrollReveal().reveal(".product-info p", {
+      ...scrollRevealOption,
+      delay: 1600,
+    });
+
+    ScrollReveal().reveal(".jar-1", {
+      duration: 1000,
+      delay: 1800,
+      origin: "left",
+      distance: "100px",
+    });
+    ScrollReveal().reveal(".jar-2", {
+      duration: 1000,
+      delay: 2000,
+      origin: "right",
+      distance: "100px",
+    });
+
+    ScrollReveal().reveal(".location", {
+      ...scrollRevealOption,
+      origin: "left",
+      delay: 2200,
+    });
+
+    ScrollReveal().reveal(".social-btn", {
+      ...scrollRevealOption,
+      origin: "right",
+      delay: 2400,
+      interval: 200,
+    });
+
+    ScrollReveal().reveal(".feature-card", {
+      ...scrollRevealOption,
+      interval: 200,
+    });
+
+    ScrollReveal().reveal(".about-text", {
+      ...scrollRevealOption,
+      interval: 300,
+    });
+
+    ScrollReveal().reveal(".stat-item", {
+      ...scrollRevealOption,
+      origin: "top",
+      interval: 150,
+    });
+
+    // Smooth scrolling for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Parallax effect for hero section
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const parallaxElement = document.querySelector('.hero::before');
+      if (parallaxElement) {
+        parallaxElement.style.transform = `translateY(${scrolled * 0.5}px)`;
+      }
+    });
+
+    // Add loading animation
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '1';
+    });
+  </script>
+</body>
+
+</html>
